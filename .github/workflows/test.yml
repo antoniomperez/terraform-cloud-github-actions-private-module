@@ -14,6 +14,5 @@ jobs:
         uses: ./
         with:
           organization: "amarquez"
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        env:
+          TF_CLOUD_TOKEN: ${{ secret.TERRAFORM_CLOUD_TOKEN }}

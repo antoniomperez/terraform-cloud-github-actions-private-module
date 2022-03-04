@@ -10,4 +10,3 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.organization }}
-    - ${{ inputs.secret.TERRAFORM_CLOUD_TOKEN}}
