@@ -22,21 +22,24 @@ RESPONSE="$(curl \
   2>/dev/null)"
 
 MODULES="$(echo "${RESPONSE}" | jq '.data')"
-VERSION="$(echo "${RESPONSE}" | jq '.data' | jq '.[0].attributes."version-statuses"' | jq '.[0].version')"
-echo "${VERSION}"
-# .attributes.version-statuses.version
+#echo "${MODULES}"
 
 # Checking if the module exit
-if [ "$MODULES" == "[]" ]; then
+if [ "$MODULES" = "[]" ]; then
   # Create a module in Terraform Cloud
   ./createModule.sh
 else
   # Check if version exist
-  VERSIONS="$(echo "${RESPONSE}" | jq '.data' | jq '.[0].attributes."version-statuses"')"
+  VERSIONS="$(echo "${RESPONSE}" | jq '.data' | jq '.[0].attributes."version-statuses"' | jq --arg v "${TF_MODULE_VERSION}" '.[] | select(.version == $v)' )"
+
+  if [ "$VERSIONS" != "" ]; then
+    echo "The version number \"$TF_MODULE_VERSION\" exists in Terraform Cloud Registry. Try another version number"
+    exit 1;
+  fi
+
   # Create a module version in Terraform Cloud
   ./createVersion.sh
-
-  
 fi
+
 
 
