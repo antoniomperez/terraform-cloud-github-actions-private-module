@@ -12,6 +12,12 @@ export TF_MODULE_VERSION=$4
 
 echo "Checking module status ...."
 
+curl \
+  --request GET \
+  --header "Authorization: Bearer ${TF_CLOUD_TOKEN}" \
+  --data q="${TF_MODULE_NAME}" \
+  https://app.terraform.io/api/v2/organizations/"$TF_ORGANIZATION_NAME"/registry-modules
+
 RESPONSE="$(curl \
   --request GET \
   --header "Authorization: Bearer ${TF_CLOUD_TOKEN}" \
@@ -20,7 +26,7 @@ RESPONSE="$(curl \
   2>/dev/null)"
 
 MODULES="$(echo "${RESPONSE}" | jq '.data')"
-echo "${RESPONSE}"
+
 # Checking if the module exit
 if [ "$MODULES" == "[]" ]; then
   # Create a module in Terraform Cloud
