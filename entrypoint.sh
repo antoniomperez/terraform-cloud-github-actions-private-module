@@ -27,7 +27,7 @@ if [ "$MODULES" == "[]" ]; then
   ./createModule.sh
 else
   # Create a module version in Terraform Cloud
-  ./createversion.sh
+  ./createVersion.sh
 fi
 
 
