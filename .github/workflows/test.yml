@@ -15,4 +15,4 @@ jobs:
         with:
           organization: "amarquez"
         env:
-          TF_CLOUD_TOKEN: ${{ secret.TERRAFORM_CLOUD_TOKEN }}
+          TF_CLOUD_TOKEN: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
