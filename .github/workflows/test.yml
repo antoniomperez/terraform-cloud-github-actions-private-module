@@ -14,5 +14,7 @@ jobs:
         uses: ./
         with:
           organization: "amarquez"
+          moduleName: "terraform-aws-test"
+          provider: "aws"
         env:
           TF_CLOUD_TOKEN: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}

@@ -1,0 +1,10 @@
+{
+  "data": {
+    "type": "registry-modules",
+    "attributes": {
+      "name": "terraform-aws-test",
+      "provider": "aws",
+      "registry-name": "private"
+    }
+  }
+}
