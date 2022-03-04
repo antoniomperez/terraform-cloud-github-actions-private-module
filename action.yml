@@ -11,6 +11,9 @@ inputs:
   provider:
     description: "Terraform provider"
     required: true
+  version:
+    description: "Module Version"
+    required: true
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -18,3 +21,4 @@ runs:
     - ${{ inputs.organization }}
     - ${{ inputs.moduleName }}
     - ${{ inputs.provider }}
+    - ${{ inputs.version }}

@@ -4,6 +4,7 @@ echo "Starting publishing a module in \"$1\" Terraform organization"
 export TF_ORGANIZATION_NAME=$1
 export TF_MODULE_NAME=$2
 export TF_PROVIDER=$3
+export TF_MODULE_VERSION=$4
 
 echo "Checking module status ...."
 
