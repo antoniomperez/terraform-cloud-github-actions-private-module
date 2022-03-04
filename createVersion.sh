@@ -37,6 +37,7 @@ curl \
   --header "Content-Type: application/octet-stream" \
   --request PUT \
   --data-binary @module.tar.gz \
-  ${UPLOAD_LINK}
+  ${UPLOAD_LINK} \
+  >/dev/null
 
 echo "The new version of the module has been uploaded"
