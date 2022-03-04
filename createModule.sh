@@ -29,6 +29,6 @@ RESPONSE="$(curl \
 MODULE="$(echo "${RESPONSE}" | jq '.data')"
 
 # Create a module version in Terraform Cloud
-./createversion.sh
+./createVersion.sh
 
 # echo "::set-output name=module::$MODULE"
