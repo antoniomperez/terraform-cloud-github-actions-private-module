@@ -25,4 +25,18 @@ RESPONSE="$(curl \
   2>/dev/null)"
 
 UPLOAD_LINK="$(echo "${RESPONSE}" | jq '.data.links.upload')"
-echo "${UPLOAD_LINK}"
+
+# Remove quotes in upload link string
+UPLOAD_LINK="${UPLOAD_LINK%\"}"
+UPLOAD_LINK="${UPLOAD_LINK#\"}"
+
+echo "Uploading module ...."
+echo
+
+curl \
+  --header "Content-Type: application/octet-stream" \
+  --request PUT \
+  --data-binary @module.tar.gz \
+  ${UPLOAD_LINK}
+
+echo "The new version of the module has been uploaded"
