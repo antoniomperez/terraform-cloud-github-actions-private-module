@@ -26,7 +26,8 @@ if [ "$MODULES" == "[]" ]; then
   # Create a module in Terraform Cloud
   ./createModule.sh
 else
-  echo  "Uploading new version of the module name: \"${TF_MODULE_NAME}\""
+  # Create a module version in Terraform Cloud
+  ./createversion.sh
 fi
 
 
