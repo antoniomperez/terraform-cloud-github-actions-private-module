@@ -1,5 +1,5 @@
 #!/bin/sh -l
 
-echo "Hello $1"
+echo "Starting publih a module in $1 Terraform organization"
 time=$(date)
 echo "::set-output name=time::$time"
