@@ -20,7 +20,7 @@ RESPONSE="$(curl \
   2>/dev/null)"
 
 MODULES="$(echo "${RESPONSE}" | jq '.data')"
-
+echo "${RESPONSE}"
 # Checking if the module exit
 if [ "$MODULES" == "[]" ]; then
   # Create a module in Terraform Cloud
